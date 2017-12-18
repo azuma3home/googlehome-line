@@ -1,4 +1,4 @@
-linetogooglehome.js
+heroku_googlehomeline.js
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -6,59 +6,59 @@ var request = require('request');
 
 const app = express();
 
-//line messaging API—p
+//line messaging APIç”¨
 const line = require('@line/bot-sdk');
 const client = new line.Client({
   channelAccessToken: 'kInrLOm1iiG79y684fECncVt9RSI7hCR/U60hMHHqpWAUGKQUhtW6G91x5KcinkTweXJGJwfAMqEd6GKdtxmVbiwXVdtaP5cfnmMBq6ZLwAM8NTlOD12RFaqQhRpw+C0DwwINnHjKdv5cCZXrktdVAdB04t89/1O/w1cDnyilFU='
 });
-const groupId = '‚â‚Á‚·‚£‚Æ–ù‰õ‚È’‡ŠÔ‚½‚¿';
+const groupId = 'ã‚„ã£ã™ã…ã¨æ„‰å¿«ãªä»²é–“ãŸã¡';
 
-// urlencoded‚Æjson‚Í•ÊX‚É‰Šú‰»‚·‚é
+// urlencodedã¨jsonã¯åˆ¥ã€…ã«åˆæœŸåŒ–ã™ã‚‹
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
 
-//heroku‚È‚Ì‚Åƒ|[ƒgŽw’è‚±‚ñ‚ÈŠ´‚¶‚ç‚µ‚¢
+//herokuãªã®ã§ãƒãƒ¼ãƒˆæŒ‡å®šã“ã‚“ãªæ„Ÿã˜ã‚‰ã—ã„
 app.listen(process.env.PORT, process.env.IP);
 console.log('Server is online.');
 
-//POST‚«‚½‚çƒRƒŒ‚ª“®‚­‘½•ªB
+//POSTããŸã‚‰ã‚³ãƒ¬ãŒå‹•ãå¤šåˆ†ã€‚
 app.post('/', function(req, res) {
 
-//‘—ŽóM—¼•ûÚ‚Á‚¯‚½‚©‚Á‚½‚Ì‚ÅA‚æ‚­‚í‚©‚ç‚È‚¢‚¯‚ÇJSON‚Ì’†g‚ª‚ ‚é‚©‚È‚¢‚©‚Å”»•Ê‚·‚é
-//‚±‚Á‚¿‚ÍƒƒbƒZ[ƒW‚ð“Ç‚Ýã‚°‚é—p
+//é€å—ä¿¡ä¸¡æ–¹è¼‰ã£ã‘ãŸã‹ã£ãŸã®ã§ã€ã‚ˆãã‚ã‹ã‚‰ãªã„ã‘ã©JSONã®ä¸­èº«ãŒã‚ã‚‹ã‹ãªã„ã‹ã§åˆ¤åˆ¥ã™ã‚‹
+//ã“ã£ã¡ã¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’èª­ã¿ä¸Šã’ã‚‹ç”¨
   if(req.body.events){
 
-    // ƒŠƒNƒGƒXƒgƒ{ƒfƒB‚ðo—ÍiŠm”F—pj
+    // ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã‚’å‡ºåŠ›ï¼ˆç¢ºèªç”¨ï¼‰
     console.log(req.body);
-    // ƒpƒ‰ƒ[ƒ^‚ðo—ÍiŠm”F—pj
+    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å‡ºåŠ›ï¼ˆç¢ºèªç”¨ï¼‰
     console.log(req.body.events[0].message);
     console.log(req.body.events[0].source.groupId);
 
-    //JSON‚Ì’†g‚ð•Ï”‚É“ü‚ê‚Ä‚éB‘½•ª
+    //JSONã®ä¸­èº«ã‚’å¤‰æ•°ã«å…¥ã‚Œã¦ã‚‹ã€‚å¤šåˆ†
     var user1 = req.body.events[0].source.userId;
     var textmain = req.body.events[0].message.text;
     var lineReplyToken = req.body.events[0].replyToken;
 
-    //ƒŠƒvƒ‰ƒCƒg[ƒNƒ“‚ðo—ÍiŠm”F—pj
+    //ãƒªãƒ—ãƒ©ã‚¤ãƒˆãƒ¼ã‚¯ãƒ³ã‚’å‡ºåŠ›ï¼ˆç¢ºèªç”¨ï¼‰
     console.log(lineReplyToken);
 
-@@@@@@@@//ƒƒbƒZ[ƒWŽóM‚µ‚½Žž‚ÌJSON‚É“ü‚Á‚Ä‚éUserId‚ðŽg‚Á‚Äƒ†[ƒU[–¼‚ðŽæ‚é
+ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡ã—ãŸæ™‚ã®JSONã«å…¥ã£ã¦ã‚‹UserIdã‚’ä½¿ã£ã¦ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’å–ã‚‹
     client.getProfile(user1)
       .then((profile) => {
 
-@@@@@@@@//LINE‚Ì–¼‘O‚Æ‚©ID‚ðo—ÍiŠm”F—pj
+ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€//LINEã®åå‰ã¨ã‹IDã‚’å‡ºåŠ›ï¼ˆç¢ºèªç”¨ï¼‰
         console.log(profile.displayName);
         console.log(profile.userId);
 
         var username = profile.displayName;
         res.end();
 
-        //IFTTT‚ÉWebhook‘—M
-        //POST‚Ì‚È‚©‚Ý
+        //IFTTTã«Webhooké€ä¿¡
+        //POSTã®ãªã‹ã¿
         var options = {
-          uri: "http://azuma3home.herokuapp.com/",
+          uri: "https://azuma3home.herokuapp.com/heroku_googlehomeline.js",
           headers: {
             "Content-type": "application/json",
           },
@@ -67,10 +67,10 @@ app.post('/', function(req, res) {
             value2: textmain
           })
         };
-        //IFTTT‚ÉPOST
+        //IFTTTã«POST
         request.post(options, function(error, response, body){
 
-          //Š®—¹ŒãABOT‚©‚çƒŠƒvƒ‰ƒC‚·‚é
+          //å®Œäº†å¾Œã€BOTã‹ã‚‰ãƒªãƒ—ãƒ©ã‚¤ã™ã‚‹
           /*
           var message = {
             type: 'text',
@@ -88,12 +88,12 @@ app.post('/', function(req, res) {
       })
       .catch((err) => {
         // error handling
-@@@@@@@@@@@@@@@@//‘½•ª‚È‚ñ‚©‚µ‚È‚­‚¿‚á‚¢‚¯‚È‚¢
+ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€//å¤šåˆ†ãªã‚“ã‹ã—ãªãã¡ã‚ƒã„ã‘ãªã„
       });
     }else{
 
-@@@@@@@@@@@@//‚±‚Á‚¿‚ÍGoogleHome‚É’‚Á‚½ƒƒbƒZ[ƒW‚ðLINE‚É“Še‚·‚é•û
-      // ƒŠƒNƒGƒXƒgƒ{ƒfƒB‚ðo—Í
+ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€//ã“ã£ã¡ã¯GoogleHomeã«å–‹ã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’LINEã«æŠ•ç¨¿ã™ã‚‹æ–¹
+      // ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã‚’å‡ºåŠ›
       console.log(req.body);
       var texttoline = req.body.text;
       console.log(texttoline);
@@ -110,7 +110,7 @@ app.post('/', function(req, res) {
         })
         .catch((err) => {
           // error handling
-@@@@@@@@@@@@@@@@@@@@//‘½•ª‚È‚ñ‚©‚µ‚È‚­‚¿‚á‚¢‚¯‚È‚¢
+ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€//å¤šåˆ†ãªã‚“ã‹ã—ãªãã¡ã‚ƒã„ã‘ãªã„
         });
     }
 })
